@@ -1,0 +1,45 @@
+import random
+class Toy:
+    def __init__(self, name, groups, price):
+        self.name = name
+        self.groups = groups
+        self.price = random.randint(400,2000)
+
+toys_list = [
+    Toy("car", "3-7 лет", ''),
+    Toy("Puzzle", "5-10 лет", ''),
+    Toy("LEGO", "8-14 лет", ''),
+    Toy("bool", "3-7 лет", ''),
+    Toy("Mechanical toy", "8-10 лет", ''),
+    Toy("doll", "3-7 лет", ''),
+    Toy("teddy bear", "3-7 лет", ''),
+]
+
+class Room:
+
+    def __init__(self):
+        self.toys = []
+        self.total_price = 0
+    def vse_toy(self, toy):
+        self.toys.append(toy)
+        self.total_price += toy.price
+
+
+    def create_room(self):
+       for toy in self.toys:
+           print(f"{toy.name}: ({toy.groups}) - ${toy.price}")
+
+    def total_price_display(self):
+        print(f"Общая стоймость игрушек: ${self.total_price}")
+
+game_room = Room()
+
+for _ in range(10):
+    toy = random.choice(toys_list)
+    game_room.vse_toy(toy)
+
+print("Игрушки, их группы и цена:")
+game_room.create_room()
+game_room.total_price_display()
+
+
